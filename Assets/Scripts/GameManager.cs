@@ -24,8 +24,6 @@ public class GameManager : Singleton<GameManager>
 		// Load level
 		// Hide loading screen
 
-		Debug.Log($"[GameManager] StartLevel: {gameMode}");
-
 		SwitchState(GameState.Core);
 		levelController.SetGameMode(gameMode);
 		coreUIController.SetupGameMode(gameMode);
@@ -33,7 +31,6 @@ public class GameManager : Singleton<GameManager>
 
 	public void OpenMenu()
 	{
-		Debug.Log($"[GameManager] OpenMenu");
 		SwitchState(GameState.Meta);
 	}
 

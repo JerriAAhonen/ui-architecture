@@ -11,11 +11,11 @@ public abstract class CoreUIGameModeHandlerBase
 
 	public virtual void Setup()
 	{
-		Debug.Log($"[GameModeCoreUIHandlerBase] Setup: {this}");
+
 	}
 
 	public virtual void Exit()
 	{
-		Debug.Log($"[GameModeCoreUIHandlerBase] Exit: {this}");
+
 	}
 }

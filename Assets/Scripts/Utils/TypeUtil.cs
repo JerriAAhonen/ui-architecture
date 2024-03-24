@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public static class TypeHelper
+public static class TypeUtil
 {
 	public static Dictionary<Type, Component> GetDerivedTypesAndInstances<T>(GameObject parentObject) where T : Component
 	{

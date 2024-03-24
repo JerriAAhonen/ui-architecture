@@ -20,20 +20,8 @@ public class LevelController : MonoBehaviour
 		currentMode = newMode;
 	}
 
-	public void ShowStartSequence()
-	{
-
-	}
-
-	public void ShowEndSequence()
-	{
-
-	}
-
 	public void OnCarCrossedFinishline()
 	{
-
+		// TODO
 	}
-
-
 }

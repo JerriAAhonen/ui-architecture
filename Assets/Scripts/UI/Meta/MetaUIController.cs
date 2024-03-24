@@ -20,12 +20,9 @@ public class MetaUIController : MonoBehaviour
 	public void Init()
 	{
 		// Fetch all main menu pages and initialize them
-		pages = TypeHelper.GetDerivedTypesAndInstances<MetaUIPageBase>(gameObject);
+		pages = TypeUtil.GetDerivedTypesAndInstances<MetaUIPageBase>(gameObject);
 		foreach (var (type, instance) in pages)
 		{
-			// Perform operations with the type and instance
-			Debug.Log($"Type: {type.Name}, Instance: {instance.name}");
-
 			if (instance is MetaUIPageBase view)
 			{
 				view.Init(this);
@@ -49,11 +46,9 @@ public class MetaUIController : MonoBehaviour
 		if (pages == null)
 			throw new Exception("MetaUIController not initialized!");
 
-		Debug.Log($"[MetaUIController] SwitchPage from {currentPage} to {typeof(T)}");
-
 		if (currentPage)
 			currentPage.Exit();
-		currentPage = TypeHelper.GetInstanceOfType<T>(pages);
+		currentPage = TypeUtil.GetInstanceOfType<T>(pages);
 		currentPage.Enter();
 	}
 }

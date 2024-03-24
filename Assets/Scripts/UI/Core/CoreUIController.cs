@@ -12,11 +12,10 @@ public class CoreUIController : MonoBehaviour
 
 	public void Init()
 	{
-		views = TypeHelper.GetDerivedTypesAndInstances<CoreUIViewBase>(gameObject);
+		views = TypeUtil.GetDerivedTypesAndInstances<CoreUIViewBase>(gameObject);
 
 		foreach (var (type, instance) in views)
 		{
-			Debug.Log($"Type: {type.Name}, Instance: {instance.name}");
 			if (instance is CoreUIViewBase view)
 				view.SetVisible(false);
 		}
@@ -26,19 +25,16 @@ public class CoreUIController : MonoBehaviour
 
 	public void SetVisible(bool visible)
 	{
-		Debug.Log($"[CoreUIController] SetVisible: {visible}");
 		gameObject.SetActive(visible);
 	}
 
 	public void SetupGameMode(GameMode gameMode)
 	{
-		Debug.Log($"[CoreUIController] SetupGameMode: {gameMode}");
-
 		currentHandler = CoreUIHandlerFactory.CreateInstance(gameMode, this) as CoreUIGameModeHandlerBase;
 		currentHandler.Setup();
 	}
 
-	public T GetView<T>() where T : Component => TypeHelper.GetInstanceOfType<T>(views);
+	public T GetView<T>() where T : Component => TypeUtil.GetInstanceOfType<T>(views);
 
 	// TODO This should be in a EndScreen view instead of in this controller
 	public void OnBack()

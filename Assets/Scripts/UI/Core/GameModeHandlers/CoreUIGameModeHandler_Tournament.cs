@@ -9,6 +9,8 @@ public class CoreUIGameModeHandler_Tournament : CoreUIGameModeHandlerBase
 	{
 		base.Setup();
 
+		// start up sequence
+
 		var carControls = controller.GetView<UIViewCarControls>();
 		carControls.SetVisible(true);
 
