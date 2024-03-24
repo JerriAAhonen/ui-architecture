@@ -5,9 +5,17 @@ using UnityEngine;
 public class MetaUIController : MonoBehaviour
 {
 	[SerializeField] private MetaUINavigationSideBar sideMenu;
+	[Header("Requestables")]
+	[SerializeField] private RequestableUIView_CornerButton playButton;
+	[SerializeField] private RequestableUIView_CornerButton backButton;
+	[SerializeField] private RequestableUIView_TextLabel topRightTextLabel;
 
 	private Dictionary<Type, Component> pages;
 	private MetaUIPageBase currentPage;
+
+	public RequestableUIView_CornerButton PlayButton => playButton;
+	public RequestableUIView_CornerButton BackButton => backButton;
+	public RequestableUIView_TextLabel TopRightTextLabel => topRightTextLabel;
 
 	public void Init()
 	{
@@ -41,12 +49,11 @@ public class MetaUIController : MonoBehaviour
 		if (pages == null)
 			throw new Exception("MetaUIController not initialized!");
 
-		Debug.Log($"Switch page from {currentPage} to ");
+		Debug.Log($"[MetaUIController] SwitchPage from {currentPage} to {typeof(T)}");
 
 		if (currentPage)
 			currentPage.Exit();
 		currentPage = TypeHelper.GetInstanceOfType<T>(pages);
-		Debug.Log($"{currentPage}");
 		currentPage.Enter();
 	}
 }

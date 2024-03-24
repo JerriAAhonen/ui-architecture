@@ -1,24 +1,24 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-
-public class MetaUIPage_NormalLevels : MetaUIPageBase
+﻿public class MetaUIPage_NormalLevels : MetaUIPageBase
 {
-	[SerializeField] private Button startLevelButton;
-
 	public override void Init(MetaUIController controller)
 	{
 		base.Init(controller);
-		startLevelButton.onClick.AddListener(OnStartLevelClicked);
 	}
 
 	public override void Enter()
 	{
 		base.Enter();
+
+		controller.PlayButton.Request(this);
+		controller.PlayButton.OnClick += OnStartLevelClicked;
 	}
 
 	public override void Exit()
 	{
 		base.Exit();
+
+		controller.PlayButton.RemoveRequester(this);
+		controller.PlayButton.OnClick -= OnStartLevelClicked;
 	}
 
 	private void OnStartLevelClicked()
